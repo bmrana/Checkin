@@ -7,6 +7,7 @@ import { GetIdentityComponent } from './person/get-identity/get-identity.compone
 import { EditPersonComponent } from './person/edit-person/edit-person.component';
 import { ClassListComponent } from './classes/class-list/class-list.component';
 import { ConfirmCheckinComponent } from './confirm-checkin/confirm-checkin.component';
+import { CockpitComponent } from './cockpit/cockpit.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ConfirmCheckinComponent } from './confirm-checkin/confirm-checkin.compo
     GetIdentityComponent,
     EditPersonComponent,
     ClassListComponent,
-    ConfirmCheckinComponent
+    ConfirmCheckinComponent,
+    CockpitComponent
   ],
   imports: [
     BrowserModule

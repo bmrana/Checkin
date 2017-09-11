@@ -1,2 +1,6 @@
 <app-header></app-header>
-
+<app-get-identity 
+    *ngIf="view === 'getPersonID'"
+    (identitySubmitted)="onPersonIDSubmitted($event)"></app-get-identity>
+<app-edit-person
+    *ngIf="view === 'showPersonData'"></app-edit-person>

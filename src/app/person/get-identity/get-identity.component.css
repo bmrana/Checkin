@@ -1,0 +1,13 @@
+.container {
+    margin-right: auto;
+    margin-left:auto;
+}
+
+.jumbotron {
+    text-align: center;
+}
+
+input {
+    height:50px;
+    margin-bottom: 20px;
+}
