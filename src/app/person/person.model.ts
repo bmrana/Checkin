@@ -5,7 +5,7 @@ export class Person {
     public fname: string;
     public lname: string;
 
-    constructor(identity: string, email: string, agency: string, fname: string, lname: string){
+    constructor(identity: string, email: string, agency: string, fname: string, lname: string) {
         this.identity = identity;
         this.email = email;
         this.agency = agency;

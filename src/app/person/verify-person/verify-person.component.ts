@@ -1,3 +1,5 @@
+import { PersonService } from './../person.service';
+import { Person } from './../person.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./verify-person.component.css']
 })
 export class VerifyPersonComponent implements OnInit {
+  possiblePersons: Person[];
 
-  constructor() { }
+  constructor(private personService: PersonService) { }
 
   ngOnInit() {
+    this.possiblePersons = this.personService.getPossibles;
   }
 
 }

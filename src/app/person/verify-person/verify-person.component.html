@@ -1,3 +1,9 @@
-<p>
-  verify-person works!
-</p>
+
+  <div class="jumbotron">
+    <h1 class="display-3">Select a Person</h1>
+    <hr class="my-4">
+    <app-possible-person 
+      *ngFor="let personEl of possiblePersons" 
+      [possiblePerson]="personEl">
+    </app-possible-person>
+  </div>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Person } from './../person.model';
 
 @Component({
   selector: 'app-edit-person',
@@ -7,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditPersonComponent implements OnInit {
 
+  @Input() person: Person;
   constructor() { }
 
   ngOnInit() {

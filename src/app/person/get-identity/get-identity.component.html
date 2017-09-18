@@ -1,21 +1,14 @@
-<div class="container">
-  <div class="jumbotron" *ngIf="identityType === 'pid'; else useEmail">
-    <h1>TCOLE PID #</h1>
-    <input type="text" class="form-control" placeholder="TCOLE PID" required>
-    <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onSubmit()">Search</button>
-    <a href="#" (click)="identityType = 'email'">
-      <h3>I don't have a PID</h3>
-    </a>
+
+  <div class="jumbotron">
+    <h1 class="display-3">TCOLE PID #</h1>
+    <input 
+      type="text" 
+      class="form-control" 
+      placeholder="TCOLE PID" 
+      (input)="onUpdatePersonID($event)">
+    <button 
+      class="btn btn-lg btn-primary btn-block" 
+      type="submit" 
+      (click)="onSubmit()">Search</button>
   </div>
 
-  <ng-template #useEmail>
-    <div class="jumbotron" *ngIf="identityType === 'email'">
-      <h1>Enter Email Address</h1>
-      <input type="text" class="form-control" placeholder="Email Address ONLY IF NO PID" required (input)="onUpdatePersonID($event)">
-      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onSubmit()">Search</button>
-      <a href="#" (click)="identityType = 'pid'">
-        <h3>I have a TCOLE PID</h3>
-      </a>
-    </div>
-  </ng-template>
-</div>

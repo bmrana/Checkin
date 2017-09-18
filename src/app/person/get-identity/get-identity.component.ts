@@ -1,25 +1,31 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { PersonService } from './../person.service';
+import { Person } from './../person.model';
 
 @Component({
   selector: 'app-get-identity',
   templateUrl: './get-identity.component.html',
   styleUrls: ['./get-identity.component.css']
 })
-export class GetIdentityComponent implements OnInit {
-  identityType: string = "pid"; //Used to set initial view
-  identity: string = '';
-  @Output() identitySubmitted = new EventEmitter<{type: string, personID: string}>();
 
-  constructor() { }
+export class GetIdentityComponent implements OnInit {
+  possiblePersons: Person[];
+  identity = '';
+
+  constructor(private router: Router, private personService: PersonService) { }
 
   ngOnInit() {
   }
 
-  onUpdatePersonID(event:Event){
+  onUpdatePersonID(event: Event) {
     this.identity = (<HTMLInputElement>event.target).value;
   }
+
   onSubmit() {
-    this.identitySubmitted.emit({type:this.identityType, personID:this.identity});
+    this.personService.findPossibles(this.identity);
+    this.router.navigate(['../verify']);
   }
 
 }
