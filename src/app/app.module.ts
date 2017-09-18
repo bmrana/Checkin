@@ -8,6 +8,7 @@ import { EditPersonComponent } from './person/edit-person/edit-person.component'
 import { ClassListComponent } from './classes/class-list/class-list.component';
 import { ConfirmCheckinComponent } from './confirm-checkin/confirm-checkin.component';
 import { CockpitComponent } from './cockpit/cockpit.component';
+import { VerifyPersonComponent } from './person/verify-person/verify-person.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CockpitComponent } from './cockpit/cockpit.component';
     EditPersonComponent,
     ClassListComponent,
     ConfirmCheckinComponent,
-    CockpitComponent
+    CockpitComponent,
+    VerifyPersonComponent
   ],
   imports: [
     BrowserModule
