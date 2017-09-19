@@ -1,5 +1,7 @@
 
-  <div class="jumbotron">
+  <div 
+    class="jumbotron"
+    *ngIf="possiblePersons.length > 0; else noPossiblePerson">
     <h1 class="display-3">Select a Person</h1>
     <hr class="my-4">
     <app-possible-person 
@@ -7,3 +9,8 @@
       [possiblePerson]="personEl">
     </app-possible-person>
   </div>
+  <ng-template #noPossiblePerson>
+    <div class="jumbotron">
+      <h1 class="display-2">No Person Found</h1>
+    </div>
+  </ng-template>
