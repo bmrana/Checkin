@@ -1,4 +1,4 @@
-<div class="list-group">
+<!-- <div class="list-group">
   <a 
     style="cursor: pointer;" 
     class="list-group-item"
@@ -10,4 +10,16 @@
     <p class="list-grou-item-text">Email: {{ possiblePerson.email }}</p>
     <p class="list-grou-item-text">PID: {{ possiblePerson.identity }}</p>
   </a>
-</div>
+</div> -->
+
+<md-card (click)="onSelect()">
+  <section class="md-card__primary">
+    Title Goes Here
+  </section>
+  <md-card-title>{{ possiblePerson.fname + ' ' + possiblePerson.lname }}</md-card-title>
+  <md-card-content>
+    <p>{{ possiblePerson.agency }}</p>
+    <p>{{ possiblePerson.email }}</p>
+    <p>{{ possiblePerson.pid }}</p>
+  </md-card-content>
+</md-card>

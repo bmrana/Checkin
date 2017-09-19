@@ -1,10 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-.container {
-    margin-right: auto;
-    margin-left:auto;
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+    margin: 0px;
+    background: #fafafa;
 }
 
-input {
-    height:50px;
-    margin-bottom: 20px;
+.form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
 }

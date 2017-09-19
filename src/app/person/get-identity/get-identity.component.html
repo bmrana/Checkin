@@ -1,6 +1,9 @@
 
-  <div class="jumbotron">
-    <h1 class="display-3">TCOLE PID #</h1>
+  <!-- <div class="jumbotron">
+    <section class="mat-typography">
+        <h1>TCOLE PID #</h1>
+    </section>
+    
     <input 
       type="text" 
       class="form-control" 
@@ -10,5 +13,24 @@
       class="btn btn-lg btn-primary btn-block" 
       type="submit" 
       (click)="onSubmit()">Search</button>
-  </div>
+  </div> -->
+
+  <md-card>
+    <md-card-title>
+        Let's See if You're in our System
+    </md-card-title>
+    <md-card-content>
+      <form class="form">
+        <md-form-field class="full-width">
+          <input mdInput 
+            placeholder="PID or Email Address"
+            (input)="onUpdatePersonID($event)">
+        </md-form-field>
+      </form>
+    </md-card-content>
+    <md-card-actions>
+      <button md-button
+        (click)="onSubmit()">Search</button>
+    </md-card-actions>
+  </md-card>
 

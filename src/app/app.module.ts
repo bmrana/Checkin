@@ -1,3 +1,4 @@
+import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -5,6 +6,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { GetIdentityComponent } from './person/get-identity/get-identity.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { SelectedPersonComponent } from './person/selected-person/selected-person.component';
 import { ClassListComponent } from './classes/class-list/class-list.component';
 import { ConfirmCheckinComponent } from './confirm-checkin/confirm-checkin.component';
@@ -24,7 +27,9 @@ import { PossiblePersonComponent } from './person/verify-person/possible-person/
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
