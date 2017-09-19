@@ -10,9 +10,5 @@ import { PersonService } from './person/person.service';
 })
 
 export class AppComponent {
-  view: string = 'getPersonID';
 
-  onPersonIDSubmitted(personIDData: {personID: string, idType: string}){
-    this.view = 'showPersonData'
-  }
 }

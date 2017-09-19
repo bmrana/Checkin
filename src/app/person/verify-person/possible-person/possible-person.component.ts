@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { PersonService } from './../../person.service';
 import { Person } from './../../person.model';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -9,9 +11,13 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PossiblePersonComponent implements OnInit {
   @Input() possiblePerson: Person;
 
-  constructor() { }
+  constructor(private personService: PersonService, private router: Router) { }
 
   ngOnInit() {
   }
 
+  onSelect() {
+    this.personService.personSelected = this.possiblePerson;
+    this.router.navigate(['../person']);
+  }
 }

@@ -1,4 +1,4 @@
-import { EditPersonComponent } from './person/edit-person/edit-person.component';
+import { SelectedPersonComponent } from './person/selected-person/selected-person.component';
 import { GetIdentityComponent } from './person/get-identity/get-identity.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 const appRoutes: Routes = [
     { path: '', component: GetIdentityComponent },
     { path: 'verify', component: VerifyPersonComponent },
-    { path: 'editPerson', component: EditPersonComponent }
+    { path: 'person', component: SelectedPersonComponent }
 ];
 
 @NgModule({

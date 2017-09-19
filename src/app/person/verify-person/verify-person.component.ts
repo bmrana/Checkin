@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./verify-person.component.css']
 })
 export class VerifyPersonComponent implements OnInit {
-  possiblePersons: Person[];
+  possiblePersons: Person[] = [];
 
   constructor(private personService: PersonService) { }
 
   ngOnInit() {
-    this.possiblePersons = this.personService.getPossibles;
+    this.possiblePersons = this.personService.getPossibles();
   }
 
 }

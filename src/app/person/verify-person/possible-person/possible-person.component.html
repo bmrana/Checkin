@@ -1,5 +1,8 @@
 <div class="list-group">
-  <a href="#" class="list-group-item">
+  <a 
+    style="cursor: pointer;" 
+    class="list-group-item"
+    (click)="onSelect()">
     <h2 class="list-group-item-heading">
       {{ possiblePerson.fname + ' ' + possiblePerson.lname}}
     </h2>
