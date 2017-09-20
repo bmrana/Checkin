@@ -1,0 +1,11 @@
+.person-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.person-list-item {
+    display: block;
+    margin: 20px;
+    width: 260px;
+}

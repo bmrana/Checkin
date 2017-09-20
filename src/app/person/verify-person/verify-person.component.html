@@ -10,13 +10,13 @@
   </div>
 </ng-template> -->
 <h1>Select a Person</h1>
-<md-grid-list cols="2" *ngIf="possiblePersons.length > 0; else noPossiblePerson" >
-  <md-grid-tile 
+<div class="person-list" *ngIf="possiblePersons.length > 0; else noPossiblePerson" >
+  <a class="person-list-item"
     *ngFor="let personEl of possiblePersons">
     <app-possible-person [possiblePerson]="personEl">
     </app-possible-person>
-  </md-grid-tile>
-</md-grid-list>
+  </a>
+</div>
 <ng-template #noPossiblePerson>
   <h1>No Person Found</h1>
 </ng-template>

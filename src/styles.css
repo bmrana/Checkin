@@ -4,6 +4,55 @@
 body {
     margin: 0px;
     background: #fafafa;
+    font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+}
+
+app-root {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+app-header {
+    z-index: 10;
+    position: relative;
+}
+
+app-verify-person {
+    z-index: 5;
+}
+
+app-get-identity {
+    z-index: 5;
+}
+
+.viewer-wrapper {
+    border: 1px solid rgba(0,0,0,.03);
+    box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+    margin: 100px;
+}
+
+.viewer-wrapper-title {
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    padding: 8px 20px;
+    color: rgba(0,0,0,.54);
 }
 
 .form {
@@ -14,4 +63,11 @@ body {
 
 .full-width {
     width: 100%;
+}
+
+.component-header {
+    padding-left: 0;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
 }
