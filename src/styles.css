@@ -3,7 +3,6 @@
 
 body {
     margin: 0px;
-    background: #fafafa;
     font-family: Roboto,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
 }
 
@@ -27,18 +26,20 @@ app-header {
     position: relative;
 }
 
-app-verify-person {
-    z-index: 5;
+.welcome {
+    text-align: center;
 }
 
-app-get-identity {
-    z-index: 5;
+.hero {
+    color: #E8EAF6;
+    background-color: #5C6BC0;
+    padding: 65px 10px 1px;
 }
 
 .viewer-wrapper {
     border: 1px solid rgba(0,0,0,.03);
     box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
-    margin: 100px;
+    margin: 150px;
 }
 
 .viewer-wrapper-title {
@@ -52,7 +53,8 @@ app-get-identity {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     padding: 8px 20px;
-    color: rgba(0,0,0,.54);
+    color: rgba(26, 35, 126,.54);
+    background-color: #C5CAE9;
 }
 
 .form {

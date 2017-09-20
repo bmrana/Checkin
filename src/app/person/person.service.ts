@@ -6,7 +6,8 @@ export class PersonService {
 
     private persons: Person[] = [
         new Person('252090', 'brandon.rana@cityofdenton.com', 'Denton PD', 'Brandon', 'Rana'),
-        new Person('252090', 'brandon.rana@gmail.com', 'Denton PD', 'Justin', 'Rana')
+        new Person('252090', 'brandon.rana@gmail.com', 'Denton PD', 'Justin', 'Rana'),
+        new Person('252090', 'todd.kidwell@cityofdenton.com', 'Denton PD', 'Todd', 'Kidwell')
     ];
 
     private possiblePersons: Person[] = [];
@@ -25,8 +26,6 @@ export class PersonService {
             }
         );
         this.possiblePersons.push(...personByEmail);
-
-        console.log(this.possiblePersons);
     }
 
     getPossibles() {

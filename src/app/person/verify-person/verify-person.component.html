@@ -9,7 +9,9 @@
     <h1 class="display-2">No Person Found</h1>
   </div>
 </ng-template> -->
-<h1>Select a Person</h1>
+<div class="welcome hero">
+  <div class="mat-headline">Please Verify Who You Are</div>
+</div>
 <div class="person-list" *ngIf="possiblePersons.length > 0; else noPossiblePerson" >
   <a class="person-list-item"
     *ngFor="let personEl of possiblePersons">
@@ -18,5 +20,24 @@
   </a>
 </div>
 <ng-template #noPossiblePerson>
-  <h1>No Person Found</h1>
+  <div class="viewer-wrapper">
+      <md-card class="alert-card">
+        <md-card-title-group>
+            <md-card-title>We Couldn't Find You</md-card-title>
+            <md-card-subtitle>Please search again or create a profile</md-card-subtitle>
+        </md-card-title-group>
+            <md-card-actions>
+                <button 
+                  md-raised-button 
+                  color="primary"
+                  (click)="onSearchAgain()">Search Again</button>
+                <button 
+                  md-raised-button 
+                  color="primary"
+                  (click)="onCreateProfile()">Create A Profile</button>
+              </md-card-actions>
+            
+        </md-card>
+  </div>
+  
 </ng-template>
