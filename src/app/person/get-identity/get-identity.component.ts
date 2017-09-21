@@ -39,7 +39,7 @@ export class GetIdentityComponent {
   }
 
   onSubmit() {
-    this.personService.findPossibles(this.identity);
+    this.personService.findPossibles(this.pid, this.email, this.fname, this.lname);
     this.router.navigate(['../verify']);
   }
 

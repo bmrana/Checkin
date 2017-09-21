@@ -15,6 +15,7 @@ export class VerifyPersonComponent implements OnInit {
 
   ngOnInit() {
     this.possiblePersons = this.personService.getPossibles();
+    console.log(this.possiblePersons);
   }
 
   onSearchAgain() {
