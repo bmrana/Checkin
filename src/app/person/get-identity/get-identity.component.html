@@ -2,36 +2,55 @@
   <div class="hero">
     <div class="mat-display-1">Welcome to the Training Center</div>
   </div>
-  <!-- <div class="mat-headline" style="margin-top: 80px;">Please Check In</div> -->
 </div>
 <div class="viewer-wrapper">
   <md-card>
     <md-card-title>Let's Find You In Our System</md-card-title>
     <md-card-subtitle>What do you want to search by?</md-card-subtitle>
     <md-card-content>
-      <form class="form">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <md-form-field class="full-width">
-          <input mdInput placeholder="TCOLE PID #" (keyup)="onKey($event,'pid')">
+          <input mdInput 
+            placeholder="TCOLE PID #" 
+            name="pid"
+            ngModel
+          >
         </md-form-field>
         <div class="mat-title">OR</div>
         <md-form-field class="full-width">
-          <input mdInput placeholder="Email Address" (keyup)="onKey($event,'email')">
+          <input mdInput 
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email Address" 
+            ngModel
+          >
         </md-form-field>
         <div class="mat-title">OR</div>
-        <table class="full-width" cellspacing="0">
-            <tr>
-              <td>
-                <md-form-field>
-                  <input mdInput placeholder="Last Name" (keyup)="onKey($event,'lname')">
-                </md-form-field>
-              </td>
-              <td>
-                <md-form-field>
-                  <input mdInput placeholder="First Name" (keyup)="onKey($event,'fname')">
-                </md-form-field>
-              </td>
-            </tr>
-          </table>
+        <div
+          id="full-name"
+          ngModelGroup="fullName"
+          #fullName="ngModelGroup">
+          <table class="full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <md-form-field>
+                    <input mdInput placeholder="Last Name" 
+                      type="text" name="lname" id="lname"
+                      ngModel
+                      >
+                  </md-form-field>
+                </td>
+                <td>
+                  <md-form-field>
+                    <input mdInput placeholder="First Name"
+                      type="text" name="fname" id="fname"
+                      ngModel>
+                  </md-form-field>
+                </td>
+              </tr>
+            </table>
+          </div>
       </form>
     </md-card-content>
     <md-card-actions>

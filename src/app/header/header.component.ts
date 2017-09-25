@@ -15,6 +15,6 @@ export class HeaderComponent implements OnInit {
   }
 
   onReset() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/identity']);
   }
 }

@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PersonService } from './../person.service';
 import { Person } from './../person.model';
 import { Component, OnInit } from '@angular/core';
@@ -11,17 +11,19 @@ import { Component, OnInit } from '@angular/core';
 export class VerifyPersonComponent implements OnInit {
   possiblePersons: Person[] = [];
 
-  constructor(private personService: PersonService, private router: Router) { }
+  constructor(private personService: PersonService,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.possiblePersons = this.personService.getPossibles();
-    console.log(this.possiblePersons);
   }
 
   onSearchAgain() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/identity']);
   }
 
   onCreateProfile() {
+    this.router.navigate(['new', {relativeTo: this.route}]);
   }
 }

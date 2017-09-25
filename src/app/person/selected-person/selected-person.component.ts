@@ -1,3 +1,5 @@
+import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 import { PersonService } from './../person.service';
 import { Person } from './../person.model';
 import { Component, Input, OnInit } from '@angular/core';
@@ -10,10 +12,19 @@ import { Component, Input, OnInit } from '@angular/core';
 
 export class SelectedPersonComponent implements OnInit {
   selectedPerson: Person;
+  editMode = false;
+  subscription: Subscription;
 
-  constructor(private personService: PersonService) {}
+  constructor(private personService: PersonService,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.selectedPerson = this.personService.personSelected;
+    this.subscription = this.personService.personSelected
+      .subscribe(
+        (selectedPerson: Person) => {
+          this.selectedPerson = selectedPerson;
+        }
+      );
+      console.log(this.selectedPerson);
   }
 }

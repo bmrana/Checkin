@@ -12,13 +12,37 @@
 <div class="welcome hero">
   <div class="mat-headline">Please Verify Who You Are</div>
 </div>
-<div class="person-list" *ngIf="possiblePersons.length > 0; else noPossiblePerson" >
-  <a class="person-list-item"
-    *ngFor="let personEl of possiblePersons">
-    <app-possible-person [possiblePerson]="personEl">
-    </app-possible-person>
-  </a>
+<div class="viewer-wrapper-large" 
+ *ngIf="possiblePersons.length > 0; else noPossiblePerson" 
+>
+  <div class="mat-headline viewer-wrapper-title">Select your profile...</div>
+    <div class="person-list" >
+      <a class="person-list-item"
+        *ngFor="let personEl of possiblePersons">
+        <app-possible-person [possiblePerson]="personEl">
+        </app-possible-person>
+      </a>
+    </div>
+    <div style="padding: 40px;">
+      <md-card>
+        <md-card-title-group>
+          <md-card-title>I Am Not Listed Here</md-card-title>
+          <md-card-subtitle>Please search again or create a profile</md-card-subtitle>
+      </md-card-title-group>
+          <md-card-actions>
+              <button 
+                md-raised-button 
+                color="primary"
+                (click)="onSearchAgain()">Search Again</button>
+              <button 
+                md-raised-button 
+                color="primary"
+                (click)="onCreateProfile()">Create A Profile</button>
+            </md-card-actions>
+      </md-card>
+    </div>
 </div>
+
 <ng-template #noPossiblePerson>
   <div class="viewer-wrapper">
       <md-card class="alert-card">

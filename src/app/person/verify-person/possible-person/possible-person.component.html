@@ -17,6 +17,7 @@
   <md-card-content>
     <p>{{ possiblePerson.agency }}</p>
     <p>{{ possiblePerson.email }}</p>
-    <p>{{ possiblePerson.pid }}</p>
+    <p *ngIf="possiblePerson.identity">PID: {{ possiblePerson.identity }}</p>
   </md-card-content>
 </md-card>
+

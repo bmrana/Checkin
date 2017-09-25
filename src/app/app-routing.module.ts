@@ -1,3 +1,5 @@
+import { HomeComponent } from './home/home.component';
+import { PossiblePersonComponent } from './person/verify-person/possible-person/possible-person.component';
 import { SelectedPersonComponent } from './person/selected-person/selected-person.component';
 import { GetIdentityComponent } from './person/get-identity/get-identity.component';
 import { NgModule, Component } from '@angular/core';
@@ -7,9 +9,13 @@ import { VerifyPersonComponent } from './person/verify-person/verify-person.comp
 import { AppComponent } from './app.component';
 
 const appRoutes: Routes = [
-    { path: '', component: GetIdentityComponent },
-    { path: 'verify', component: VerifyPersonComponent },
-    { path: 'person', component: SelectedPersonComponent }
+    { path: '', component: HomeComponent},
+    { path: 'identity', component: GetIdentityComponent, },
+    { path: 'person', component: SelectedPersonComponent, children: [
+        { path: 'new', component: SelectedPersonComponent },
+        { path: 'edit', component: SelectedPersonComponent },
+    ] },
+    { path: 'verify', component: VerifyPersonComponent }
 ];
 
 @NgModule({

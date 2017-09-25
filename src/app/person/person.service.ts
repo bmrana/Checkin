@@ -1,41 +1,36 @@
 import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 import { Person } from './person.model';
 
 export class PersonService {
-    personSelected: Person;
+    // personSelected: Person;
+    personSelected = new Subject<Person>();
 
     private persons: Person[] = [
         new Person(1, '252090', 'brandon.rana@cityofdenton.com', 'Denton PD', 'Brandon', 'Rana'),
         new Person(2, '252090', 'brandon.rana@gmail.com', 'Denton PD', 'Justin', 'Rana'),
-        new Person(3, '252090', 'todd.kidwell@cityofdenton.com', 'Denton PD', 'Todd', 'Kidwell')
+        new Person(3, '', 'todd.kidwell@cityofdenton.com', 'Denton PD', 'Todd', 'Kidwell')
     ];
 
     private possiblePersons: Person[] = [];
 
     findPossibles(pid: string, email: string, fname: string, lname: string) {
         this.possiblePersons = [];
-        const personByPID = this.persons.filter(
+        this.possiblePersons = this.persons.filter(
             (p) => {
-                return p.identity === pid;
+                return p.identity === pid || p.email === email ||  (p.lname === lname && p.fname === fname);
             }
         );
-        if (this.possiblePersons.indexOf(personByPID.personid) === -1) {
-        this.possiblePersons.push(...personByPID);
-        const personByEmail = this.persons.filter(
-            (p) => {
-                return p.email === email;
-            }
-        );
-        this.possiblePersons.push(...personByEmail);
-        const personByName = this.persons.filter(
-            (p) => {
-                return p.lname === lname && p.fname === fname;
-            }
-        );
-        this.possiblePersons.push(...personByName);
+
+        console.log(this.possiblePersons);
     }
 
     getPossibles() {
         return this.possiblePersons.slice();
+    }
+
+    onPersonSelected(id: number) {
+        const index = this.persons.findIndex(i => i.personid === id);
+        this.personSelected.next(this.persons[index]);
     }
 }

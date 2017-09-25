@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 import { PersonService } from './../person.service';
 import { Person } from './../person.model';
@@ -12,6 +13,7 @@ import { Person } from './../person.model';
 })
 
 export class GetIdentityComponent {
+  @ViewChild('f') identityForm: NgForm;
   possiblePersons: Person[];
   email = '';
   lname = '';
@@ -19,28 +21,14 @@ export class GetIdentityComponent {
   pid = '';
   identity = '';
 
-  constructor(private router: Router, private personService: PersonService) { }
+  constructor(private router: Router,
+              private personService: PersonService,
+              private route: ActivatedRoute) { }
 
-  onKey(event: Event, input: string) {
-    switch (input) {
-      case 'pid':
-        this.pid = ((<HTMLInputElement>event.target).value);
-        break;
-      case 'email':
-        this.email = ((<HTMLInputElement>event.target).value);
-        break;
-      case 'lname':
-        this.lname = ((<HTMLInputElement>event.target).value);
-        break;
-      case 'fname':
-        this.fname = ((<HTMLInputElement>event.target).value);
-        break;
-    }
-  }
-
-  onSubmit() {
-    this.personService.findPossibles(this.pid, this.email, this.fname, this.lname);
-    this.router.navigate(['../verify']);
+  onSubmit(form: NgForm) {
+    this.personService.findPossibles(this.identityForm.value.pid, this.identityForm.value.email,
+      this.identityForm.value.fullName.fname, this.identityForm.value.fullName.lname);
+    this.router.navigate(['verify']);
   }
 
 }
