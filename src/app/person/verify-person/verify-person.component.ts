@@ -24,6 +24,6 @@ export class VerifyPersonComponent implements OnInit {
   }
 
   onCreateProfile() {
-    this.router.navigate(['new', {relativeTo: this.route}]);
+    this.router.navigate(['person']);
   }
 }

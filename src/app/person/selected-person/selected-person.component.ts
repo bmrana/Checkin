@@ -19,12 +19,7 @@ export class SelectedPersonComponent implements OnInit {
               private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.subscription = this.personService.personSelected
-      .subscribe(
-        (selectedPerson: Person) => {
-          this.selectedPerson = selectedPerson;
-        }
-      );
-      console.log(this.selectedPerson);
+    this.selectedPerson = this.personService.personSelected;
+    this.editMode = this.selectedPerson != null;
   }
 }

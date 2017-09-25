@@ -3,8 +3,8 @@ import { Subject } from 'rxjs/Subject';
 import { Person } from './person.model';
 
 export class PersonService {
-    // personSelected: Person;
-    personSelected = new Subject<Person>();
+    personSelected: Person;
+    // personSelected = new Subject<Person>();
 
     private persons: Person[] = [
         new Person(1, '252090', 'brandon.rana@cityofdenton.com', 'Denton PD', 'Brandon', 'Rana'),
@@ -22,7 +22,7 @@ export class PersonService {
             }
         );
 
-        console.log(this.possiblePersons);
+        // console.log(this.possiblePersons);
     }
 
     getPossibles() {
@@ -31,6 +31,7 @@ export class PersonService {
 
     onPersonSelected(id: number) {
         const index = this.persons.findIndex(i => i.personid === id);
-        this.personSelected.next(this.persons[index]);
+        this.personSelected = this.persons[index];
+        // console.log(this.personSelected);
     }
 }

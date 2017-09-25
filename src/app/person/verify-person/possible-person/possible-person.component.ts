@@ -18,6 +18,7 @@ export class PossiblePersonComponent implements OnInit {
   ngOnInit() {}
 
   onSelect() {
+    this.personService.onPersonSelected(this.possiblePerson.personid);
     this.router.navigate(['/person']);
   }
 }
