@@ -1,6 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { PersonService } from './../person.service';
 import { Person } from './../person.model';
@@ -12,23 +12,40 @@ import { Person } from './../person.model';
   styleUrls: ['./get-identity.component.css']
 })
 
-export class GetIdentityComponent {
-  @ViewChild('f') identityForm: NgForm;
+export class GetIdentityComponent implements OnInit{
   possiblePersons: Person[];
-  email = '';
-  lname = '';
-  fname = '';
-  pid = '';
-  identity = '';
+  identityForm: FormGroup;
 
   constructor(private router: Router,
               private personService: PersonService,
               private route: ActivatedRoute) { }
 
-  onSubmit(form: NgForm) {
-    this.personService.findPossibles(this.identityForm.value.pid, this.identityForm.value.email,
-      this.identityForm.value.fullName.fname, this.identityForm.value.fullName.lname);
+  ngOnInit() {
+    this.initForm();
+  }
+
+  private initForm() {
+    // const email = '';
+    // const lname = '';
+    // const fname = '';
+    // const identity = '';
+
+    this.identityForm = new FormGroup ({
+      'fullname': new FormGroup({
+        'lname': new FormControl(null),
+        'fname': new FormControl(null)
+        }),
+      'email': new FormControl(null, Validators.email),
+      'pid': new FormControl(null)
+    });
+  }
+
+  onSubmit() {
+    this.personService
+      .findPossibles(this.identityForm.value.pid, this.identityForm.value.email,
+                    this.identityForm.value.fname, this.identityForm.value.lname);
     this.router.navigate(['verify']);
+    console.log(this.identityForm);
   }
 
 }

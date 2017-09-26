@@ -1,3 +1,4 @@
+import { ClassesService } from './classes/classes.service';
 import { Component, Input } from '@angular/core';
 
 import { PersonService } from './person/person.service';
@@ -6,7 +7,7 @@ import { PersonService } from './person/person.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [PersonService]
+  providers: [PersonService, ClassesService]
 })
 
 export class AppComponent {

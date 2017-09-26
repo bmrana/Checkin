@@ -3,58 +3,57 @@
     <div class="mat-display-1">Welcome to the Training Center</div>
   </div>
 </div>
-<div class="viewer-wrapper">
+<div class="viewer-wrapper-large">
   <md-card>
     <md-card-title>Let's Find You In Our System</md-card-title>
     <md-card-subtitle>What do you want to search by?</md-card-subtitle>
     <md-card-content>
-      <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <form [formGroup]="identityForm" (ngSubmit)="onSubmit()">
+        <div class="form-wrapper">
         <md-form-field class="full-width">
           <input mdInput 
             placeholder="TCOLE PID #" 
-            name="pid"
-            ngModel
+            formControlName="pid"
           >
         </md-form-field>
         <div class="mat-title">OR</div>
         <md-form-field class="full-width">
           <input mdInput 
-            type="email"
-            id="email"
-            name="email"
             placeholder="Email Address" 
-            ngModel
-          >
+            formControlName="email"
+            >
         </md-form-field>
         <div class="mat-title">OR</div>
-        <div
-          id="full-name"
-          ngModelGroup="fullName"
-          #fullName="ngModelGroup">
+        <div formGroupName="fullname">
           <table class="full-width" cellspacing="0">
               <tr>
                 <td>
-                  <md-form-field>
-                    <input mdInput placeholder="Last Name" 
-                      type="text" name="lname" id="lname"
-                      ngModel
-                      >
+                  <md-form-field class="full-width">
+                    <input 
+                      mdInput 
+                      placeholder="Last Name"
+                      formControlName="lname"
+                    >
                   </md-form-field>
                 </td>
                 <td>
-                  <md-form-field>
-                    <input mdInput placeholder="First Name"
-                      type="text" name="fname" id="fname"
-                      ngModel>
+                  <md-form-field class="full-width">
+                    <input 
+                      mdInput 
+                      placeholder="First Name"
+                      formControlName="fname"
+                    >
                   </md-form-field>
                 </td>
               </tr>
             </table>
           </div>
+        </div>
+          <button 
+            md-raised-button 
+            (click)="onSubmit()"
+            type="submit">Search</button>          
       </form>
     </md-card-content>
-    <md-card-actions>
-      <button md-button (click)="onSubmit()">Search</button>
-    </md-card-actions>
   </md-card>
 </div>

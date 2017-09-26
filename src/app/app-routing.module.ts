@@ -1,3 +1,5 @@
+import { ConfirmComponent } from './classes/confirm/confirm.component';
+import { ClassListComponent } from './classes/class-list/class-list.component';
 import { HomeComponent } from './home/home.component';
 import { PossiblePersonComponent } from './person/verify-person/possible-person/possible-person.component';
 import { SelectedPersonComponent } from './person/selected-person/selected-person.component';
@@ -15,7 +17,9 @@ const appRoutes: Routes = [
         { path: 'new', component: SelectedPersonComponent },
         { path: 'edit', component: SelectedPersonComponent },
     ] },
-    { path: 'verify', component: VerifyPersonComponent }
+    { path: 'verify', component: VerifyPersonComponent },
+    { path: 'classes', component: ClassListComponent, },
+    { path: 'confirm', component: ConfirmComponent }
 ];
 
 @NgModule({

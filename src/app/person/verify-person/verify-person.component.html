@@ -12,12 +12,9 @@
 <div class="welcome hero">
   <div class="mat-headline">Please Verify Who You Are</div>
 </div>
-<div class="viewer-wrapper-large" 
- *ngIf="possiblePersons.length > 0; else noPossiblePerson" 
->
-  <div class="mat-headline viewer-wrapper-title">Select your profile...</div>
-    <div class="person-list" >
-      <a class="person-list-item"
+<div *ngIf="possiblePersons.length > 0; else noPossiblePerson">
+    <div class="card-list">
+      <a class="card-list-item"
         *ngFor="let personEl of possiblePersons">
         <app-possible-person [possiblePerson]="personEl">
         </app-possible-person>
@@ -32,11 +29,9 @@
           <md-card-actions>
               <button 
                 md-raised-button 
-                color="primary"
                 (click)="onSearchAgain()">Search Again</button>
               <button 
                 md-raised-button 
-                color="primary"
                 (click)="onCreateProfile()">Create A Profile</button>
             </md-card-actions>
       </md-card>
@@ -53,11 +48,9 @@
             <md-card-actions>
                 <button 
                   md-raised-button 
-                  color="primary"
                   (click)="onSearchAgain()">Search Again</button>
                 <button 
                   md-raised-button 
-                  color="primary"
                   (click)="onCreateProfile()">Create A Profile</button>
               </md-card-actions>
             

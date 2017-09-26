@@ -1,3 +1,12 @@
-<p>
-  class-list works!
-</p>
+<div class="welcome hero">
+  <div class="mat-headline">Which class is {{ this.name }} checking in for?</div>
+</div>
+<div>
+  <div class="card-list">
+    <a 
+      class="card-list-item"
+      *ngFor="let class of currentClasses">
+      <app-class-item [class]="class"></app-class-item>  
+    </a>
+  </div>
+</div>

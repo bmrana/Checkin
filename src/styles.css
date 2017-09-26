@@ -24,10 +24,23 @@ app-root {
 app-header {
     z-index: 10;
     position: relative;
+    
 }
 
 form {
     padding: 40px;
+}
+
+.card-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.card-list-item {
+    display: block;
+    margin: 20px;
+    width: 310px;
 }
 
 .welcome {
@@ -82,4 +95,8 @@ form {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
+}
+
+.form-wrapper {
+    padding-bottom: 30px;
 }

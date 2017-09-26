@@ -1,5 +1,3 @@
-import { EventEmitter } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
 import { Person } from './person.model';
 
 export class PersonService {
