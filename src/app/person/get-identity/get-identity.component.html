@@ -10,45 +10,73 @@
     <md-card-content>
       <form [formGroup]="identityForm" (ngSubmit)="onSubmit()">
         <div class="form-wrapper">
-        <md-form-field class="full-width">
-          <input mdInput 
-            placeholder="TCOLE PID #" 
-            formControlName="pid"
-          >
-        </md-form-field>
-        <div class="mat-title">OR</div>
-        <md-form-field class="full-width">
-          <input mdInput 
-            placeholder="Email Address" 
-            formControlName="email"
-            >
-        </md-form-field>
-        <div class="mat-title">OR</div>
-        <div formGroupName="fullname">
-          <table class="full-width" cellspacing="0">
-              <tr>
-                <td>
-                  <md-form-field class="full-width">
-                    <input 
-                      mdInput 
-                      placeholder="Last Name"
-                      formControlName="lname"
-                    >
+          <table class="full-width">
+            <tr>
+              <td class="icon-space">
+                <md-icon>verified_user</md-icon>
+              </td>
+              <td>
+                <md-form-field class="full-width">
+                  <input mdInput 
+                    placeholder="TCOLE PID #" 
+                    formControlName="pid">
+                </md-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td class="icon-space"></td>
+              <td class="mat-title">OR</td>
+            </tr>
+            <tr>
+              <td class="icon-space">
+                <md-icon>email</md-icon>
+              </td>
+              <td>
+                <md-form-field class="full-width">
+                  <input mdInput 
+                    placeholder="Email Address" 
+                    formControlName="email">
                   </md-form-field>
-                </td>
-                <td>
-                  <md-form-field class="full-width">
-                    <input 
-                      mdInput 
-                      placeholder="First Name"
-                      formControlName="fname"
-                    >
-                  </md-form-field>
-                </td>
-              </tr>
-            </table>
-          </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="icon-space"></td>
+              <td class="mat-title">OR</td>
+            </tr>
+            <tr>
+              <td class="icon-space">
+                <md-icon>face</md-icon>
+              </td>
+              <td>
+                <div formGroupName="fullname">
+                  <table class="full-width" cellspacing="0">
+                    <tr>
+                      <td>
+                        <md-form-field class="full-width">
+                          <input 
+                            mdInput 
+                            placeholder="Last Name"
+                            formControlName="lname">
+                        </md-form-field>
+                      </td>                        
+                      <td>
+                        <md-form-field class="full-width">
+                         <input 
+                            mdInput 
+                            placeholder="First Name"
+                            formControlName="fname">
+                        </md-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </table>
+        
         </div>
+        <span></span>
+        <span class="spacer"></span>
           <button 
             md-raised-button 
             (click)="onSubmit()"

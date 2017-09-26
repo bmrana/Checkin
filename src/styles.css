@@ -27,9 +27,9 @@ app-header {
     
 }
 
-form {
+/* form {
     padding: 40px;
-}
+} */
 
 .card-list {
     display: flex;
@@ -80,10 +80,8 @@ form {
     background-color: #C5CAE9;
 }
 
-.form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
+.icon-space {
+    width: 35px;
 }
 
 .full-width {
@@ -99,4 +97,8 @@ form {
 
 .form-wrapper {
     padding-bottom: 30px;
+}
+
+.spacer {
+    flex: 1 1 auto;
 }
