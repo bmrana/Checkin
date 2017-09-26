@@ -2,9 +2,53 @@
   <div class="mat-headline">Create Your Profile</div>
 </div>
 <div class="viewer-wrapper-large">
-  <form>
-    <md-form-field>
-      <input mdinput placeholder="First Name">
-    </md-form-field>
+  <form [formGroup]="personForm">
+      <table class="full-width" cellspacing="0">
+          <tr>
+            <td>
+              <md-form-field class="full-width">
+                <input mdInput 
+                  placeholder="Last Name" 
+                  type="text" 
+                  formControlName="lname"
+                >
+              </md-form-field>
+            </td>
+            <td>
+              <md-form-field  class="full-width">
+                <input 
+                  mdInput 
+                  placeholder="First Name"
+                  type="text"
+                  formControlName="fname"
+                >
+              </md-form-field>
+            </td>
+          </tr>
+        </table>  
+        <md-form-field class="full-width">
+          <input 
+            mdInput 
+            type="text" 
+            placeholder="Agency or Employer"
+            formControlName="agency"
+          >
+        </md-form-field>
+        <md-form-field class="full-width">
+          <input 
+            mdInput 
+            type="text" 
+            placeholder="Email Address"
+            formControlName="email"
+          >
+        </md-form-field>
+        <md-form-field class="full-width">
+          <input 
+            mdInput 
+            type="text" 
+            placeholder="TCOLE PID"
+            formControlName="pid">
+          <md-hint align="start"><strong>This may not be applicable for you...</strong> </md-hint>
+        </md-form-field>
   </form>
 </div>

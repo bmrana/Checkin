@@ -26,6 +26,10 @@ app-header {
     position: relative;
 }
 
+form {
+    padding: 40px;
+}
+
 .welcome {
     text-align: center;
 }
