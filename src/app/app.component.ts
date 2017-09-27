@@ -1,5 +1,6 @@
+import { WebConnectService } from './web-connect.service';
 import { ClassesService } from './classes/classes.service';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { PersonService } from './person/person.service';
 
@@ -10,6 +11,11 @@ import { PersonService } from './person/person.service';
   providers: [PersonService, ClassesService]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
 
+  constructor(private http: WebConnectService) {}
+
+  ngOnInit() {
+    this.http.getStudents('252090', null, null, null);
+  }
 }
