@@ -1,3 +1,4 @@
+import { Credential } from './../credential.model';
 import { WebConnectService } from './../../web-connect.service';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -19,7 +20,8 @@ export class GetIdentityComponent implements OnInit{
 
   constructor(private router: Router,
               private httpService: WebConnectService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private personService: PersonService) { }
 
   ngOnInit() {
     this.initForm();
@@ -36,7 +38,7 @@ export class GetIdentityComponent implements OnInit{
         'lname': new FormControl(null),
         'fname': new FormControl(null)
         }),
-      'email': new FormControl(null, Validators.email),
+      'email': new FormControl(null),
       'pid': new FormControl(null)
     });
   }
@@ -45,11 +47,12 @@ export class GetIdentityComponent implements OnInit{
     // this.personService
     //   .findPossibles(this.identityForm.value.pid, this.identityForm.value.email,
     //                 this.identityForm.value.fname, this.identityForm.value.lname);
-    this.httpService.getStudents(
-      this.identityForm.value.pid,
+    this.personService.whoWantsIn = new Credential(this.identityForm.value.pid,
       this.identityForm.value.lname,
       this.identityForm.value.fname,
       this.identityForm.value.email);
+
+    this.httpService.getStudents(this.personService.whoWantsIn);
     this.router.navigate(['verify']);
   }
 

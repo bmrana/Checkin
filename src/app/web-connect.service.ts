@@ -1,3 +1,4 @@
+import { Credential } from './person/credential.model';
 import { PersonService } from './person/person.service';
 import { Person } from './person/person.model';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
@@ -11,13 +12,13 @@ export class WebConnectService {
 
   constructor(private http: HttpClient, private personService: PersonService) { }
 
-  getStudents(pid: string, lname: string, fname: string, email: string) {
+  getStudents(whoWantsIn: Credential) {
     let parameters = new HttpParams();
 
-    parameters = parameters.append('PID', pid);
-    parameters = parameters.append('lname', lname);
-    parameters = parameters.append('fname', fname);
-    parameters = parameters.append('email', email);
+    parameters = parameters.append('PID', whoWantsIn.pid);
+    parameters = parameters.append('lname', whoWantsIn.lname);
+    parameters = parameters.append('fname', whoWantsIn.fname);
+    parameters = parameters.append('email', whoWantsIn.email);
 
     return this.http.get<Person[]>('http://services.dentontraining.com/searchpid/searchpid.svc/getPossibleStudents?wsdl',
     {params: parameters})

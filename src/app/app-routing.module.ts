@@ -1,3 +1,4 @@
+import { PossiblePersonResolver } from './possible-person-resolver.service';
 import { ConfirmComponent } from './classes/confirm/confirm.component';
 import { ClassListComponent } from './classes/class-list/class-list.component';
 import { HomeComponent } from './home/home.component';
@@ -17,7 +18,8 @@ const appRoutes: Routes = [
         { path: 'new', component: SelectedPersonComponent },
         { path: 'edit', component: SelectedPersonComponent },
     ] },
-    { path: 'verify', component: VerifyPersonComponent },
+    { path: 'verify', component: VerifyPersonComponent, resolve: {
+        possiblePersons: PossiblePersonResolver} },
     { path: 'classes', component: ClassListComponent, },
     { path: 'confirm', component: ConfirmComponent }
 ];
@@ -26,7 +28,8 @@ const appRoutes: Routes = [
     imports: [
         RouterModule.forRoot(appRoutes)
     ],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers: [ PossiblePersonResolver ],
 })
 
 export class AppRoutingModule {}

@@ -16,7 +16,11 @@ export class VerifyPersonComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.possiblePersons = this.personService.getPossibles();
+    this.route.data
+      .subscribe((data: { persons: Person[]}) => {
+        this.possiblePersons = data.persons;
+        console.log(this.possiblePersons);
+      });
   }
 
   onSearchAgain() {
