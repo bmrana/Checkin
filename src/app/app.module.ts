@@ -1,3 +1,4 @@
+import { PersonService } from './person/person.service';
 import { WebConnectService } from './web-connect.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -42,7 +43,7 @@ import { ConfirmComponent } from './classes/confirm/confirm.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [WebConnectService],
+  providers: [WebConnectService, PersonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,4 @@
+import { WebConnectService } from './../../web-connect.service';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
@@ -17,7 +18,7 @@ export class GetIdentityComponent implements OnInit{
   identityForm: FormGroup;
 
   constructor(private router: Router,
-              private personService: PersonService,
+              private httpService: WebConnectService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -41,11 +42,15 @@ export class GetIdentityComponent implements OnInit{
   }
 
   onSubmit() {
-    this.personService
-      .findPossibles(this.identityForm.value.pid, this.identityForm.value.email,
-                    this.identityForm.value.fname, this.identityForm.value.lname);
+    // this.personService
+    //   .findPossibles(this.identityForm.value.pid, this.identityForm.value.email,
+    //                 this.identityForm.value.fname, this.identityForm.value.lname);
+    this.httpService.getStudents(
+      this.identityForm.value.pid,
+      this.identityForm.value.lname,
+      this.identityForm.value.fname,
+      this.identityForm.value.email);
     this.router.navigate(['verify']);
-    console.log(this.identityForm);
   }
 
 }
