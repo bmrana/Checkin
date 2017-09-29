@@ -1,32 +1,45 @@
+import { Status } from './status-code.model';
 import { Credential } from './person/credential.model';
 import { PersonService } from './person/person.service';
 import { Person } from './person/person.model';
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
-import { OnInit, Injectable } from '@angular/core';
+import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class WebConnectService {
-  persons: Person[];
+  whoWantsIn: Credential;
+  whoWantsUpdate: Person;
 
   constructor(private http: HttpClient, private personService: PersonService) { }
 
-  getStudents(whoWantsIn: Credential) {
+  fetchStudents(whoWantsIn: Credential) {
     let parameters = new HttpParams();
-
-    console.log(whoWantsIn);
-    parameters = parameters.append('PID', whoWantsIn.pid);
-    parameters = parameters.append('lname', whoWantsIn.lname);
-    parameters = parameters.append('fname', whoWantsIn.fname);
-    parameters = parameters.append('email', whoWantsIn.email);
+      parameters = parameters.append('PID', whoWantsIn.pid);
+      parameters = parameters.append('lname', whoWantsIn.lname);
+      parameters = parameters.append('fname', whoWantsIn.fname);
+      parameters = parameters.append('email', whoWantsIn.email);
 
     return this.http.get<Person[]>('http://services.dentontraining.com/searchpid/searchpid.svc/getPossibleStudents?wsdl',
-    {params: parameters})
-      .subscribe(
+      {params: parameters})
+      .map(
         (persons) => {
+          console.log(persons);
           this.personService.setPossibles(persons);
+          return persons;
         }
       );
+  }
+
+  updateStudent(student: Person) {
+    console.log(student);
+    this.http.post('http://services.dentontraining.com/searchpid/searchpid.svc/updateStudent?wsdl', student)
+    .subscribe(
+      (n) => {
+        console.log(n);
+        this.personService.updateStatusCode(n);
+      }
+    );
   }
 }

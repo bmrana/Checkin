@@ -1,3 +1,4 @@
+import { WebConnectService } from './../../web-connect.service';
 import { ActivatedRoute, Params, Router, ParamMap } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PersonService } from './../person.service';
@@ -21,7 +22,8 @@ export class SelectedPersonComponent implements OnInit {
 
   constructor(private personService: PersonService,
               private router: Router,
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private httpService: WebConnectService) {}
 
   ngOnInit() {
     this.route.params
@@ -38,9 +40,18 @@ export class SelectedPersonComponent implements OnInit {
   }
 
   onSubmit() {
-    this.router.navigate(['classes']);
+    this.httpService.updateStudent(this.buildPerson());
+    // this.router.navigate(['classes/' + this.id]);
   }
 
+  buildPerson() {
+    const sid = this.editMode ? this.person.id : -1;
+    const newGuy: Person = new Person(
+      sid, this.personForm.get('pid').value, this.personForm.get('email').value,
+      this.personForm.get('agency').value, this.personForm.get('fname').value, this.personForm.get('lname').value
+    );
+    return newGuy;
+  }
   private initForm() {
     let fname = '';
     let lname = '';

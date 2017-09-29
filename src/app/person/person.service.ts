@@ -1,3 +1,4 @@
+import { Status } from './../status-code.model';
 import { Injectable } from '@angular/core';
 import { Credential } from './credential.model';
 import { WebConnectService } from './../web-connect.service';
@@ -8,9 +9,8 @@ import { Subject } from 'rxjs/Subject';
 export class PersonService {
     whoWantsIn: Credential;
     personsRetrieved = new Subject<Person[]>();
-    private possiblePersons: Person[] = [
-        new Person(1, '', '', '', '', '')
-    ];
+    statusCode = new Subject<Status>();
+    private possiblePersons: Person[]= [];
 
     setPossibles(persons: Person[]) {
         this.possiblePersons = persons;
@@ -19,7 +19,9 @@ export class PersonService {
 
     getPerson(idNumber): Person {
         const person: Person = this.possiblePersons.find(p => p.id === idNumber);
-        console.log(this.possiblePersons);
         return person;
+    }
+    updateStatusCode(status: any) {
+        this.statusCode.next(status);
     }
 }

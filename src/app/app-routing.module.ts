@@ -14,10 +14,11 @@ import { AppComponent } from './app.component';
 const appRoutes: Routes = [
     { path: '', component: HomeComponent},
     { path: 'identity', component: GetIdentityComponent, },
+    { path: 'person/new', component: SelectedPersonComponent },
     { path: 'person/:id', component: SelectedPersonComponent },
     { path: 'verify', component: VerifyPersonComponent, resolve: {
         possiblePersons: PossiblePersonResolver} },
-    { path: 'classes', component: ClassListComponent, },
+    { path: 'classes/:id', component: ClassListComponent, },
     { path: 'confirm', component: ConfirmComponent }
 ];
 

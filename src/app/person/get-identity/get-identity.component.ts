@@ -40,13 +40,13 @@ export class GetIdentityComponent implements OnInit {
   }
 
   onSubmit() {
-    this.personService.whoWantsIn = new Credential(this.identityForm.value.pid,
+    this.httpService.whoWantsIn = new Credential(this.identityForm.value.pid,
       this.identityForm.value.email,
       this.identityForm.value.fullname.lname,
       this.identityForm.value.fullname.fname,
       );
 
-    this.httpService.getStudents(this.personService.whoWantsIn);
+    // this.httpService.fetchStudents(this.personService.whoWantsIn);
     this.router.navigate(['verify']);
   }
 
