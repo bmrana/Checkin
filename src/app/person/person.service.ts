@@ -1,23 +1,25 @@
+import { Injectable } from '@angular/core';
 import { Credential } from './credential.model';
 import { WebConnectService } from './../web-connect.service';
 import { Person } from './person.model';
+import { Subject } from 'rxjs/Subject';
 
+@Injectable()
 export class PersonService {
-    personSelected: Person;
     whoWantsIn: Credential;
+    personsRetrieved = new Subject<Person[]>();
+    private possiblePersons: Person[] = [
+        new Person(1, '', '', '', '', '')
+    ];
 
-    private possiblePersons: Person[] = [];
-
-    setPossibles(possibles: Person[]) {
-        this.possiblePersons = possibles;
+    setPossibles(persons: Person[]) {
+        this.possiblePersons = persons;
+        this.personsRetrieved.next(this.possiblePersons);
     }
 
-    getPossibles() {
-        return this.possiblePersons.slice();
-    }
-
-    onPersonSelected(id: number) {
-        const index = this.possiblePersons.findIndex(i => i.pid === id);
-        this.personSelected = this.possiblePersons[index];
+    getPerson(idNumber): Person {
+        const person: Person = this.possiblePersons.find(p => p.id === idNumber);
+        console.log(this.possiblePersons);
+        return person;
     }
 }

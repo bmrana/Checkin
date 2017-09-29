@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Person } from './../../person/person.model';
 import { PersonService } from './../../person/person.service';
 import { Class } from './../class.model';
@@ -12,19 +12,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClassListComponent implements OnInit {
   currentClasses: Class[];
-  currentPerson: Person;
+  person: Person;
+  id: number;
   name: string;
 
   constructor(private classService: ClassesService,
               private personService: PersonService,
-              private router: Router) { }
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if (!this.personService.personSelected) { // no person selected
+    this.route.params
+    .subscribe(
+      (params: Params) => {
+        this.id = +params['id'];
+        this.person = this.personService.getPerson(this.id);
+      }
+    );
+    if (!this.person) { // no person selected
       this.router.navigate(['identity']);
     } else {
-      this.currentPerson = this.personService.personSelected;
-      this.name = this.currentPerson.fname + ' ' + this.currentPerson.lname;
+      this.name = this.person.fname + ' ' + this.person.lname;
       this.currentClasses = this.classService.getClasses();
     }
   }

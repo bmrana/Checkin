@@ -1,14 +1,14 @@
 export class Person {
-    public pid: number;
-    public identity: string;
+    public id: number;
+    public pid: string;
     public email: string;
     public agency: string;
     public fname: string;
     public lname: string;
 
-    constructor(pid: number, identity: string, email: string, agency: string, fname: string, lname: string) {
+    constructor(id: number, pid: string, email: string, agency: string, fname: string, lname: string) {
+        this.id = id;
         this.pid = pid;
-        this.identity = identity;
         this.email = email;
         this.agency = agency;
         this.fname = fname;

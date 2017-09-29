@@ -14,7 +14,7 @@ import { Person } from './../person.model';
   styleUrls: ['./get-identity.component.css']
 })
 
-export class GetIdentityComponent implements OnInit{
+export class GetIdentityComponent implements OnInit {
   possiblePersons: Person[];
   identityForm: FormGroup;
 
@@ -28,10 +28,6 @@ export class GetIdentityComponent implements OnInit{
   }
 
   private initForm() {
-    // const email = '';
-    // const lname = '';
-    // const fname = '';
-    // const identity = '';
 
     this.identityForm = new FormGroup ({
       'fullname': new FormGroup({
@@ -44,13 +40,11 @@ export class GetIdentityComponent implements OnInit{
   }
 
   onSubmit() {
-    // this.personService
-    //   .findPossibles(this.identityForm.value.pid, this.identityForm.value.email,
-    //                 this.identityForm.value.fname, this.identityForm.value.lname);
     this.personService.whoWantsIn = new Credential(this.identityForm.value.pid,
-      this.identityForm.value.lname,
-      this.identityForm.value.fname,
-      this.identityForm.value.email);
+      this.identityForm.value.email,
+      this.identityForm.value.fullname.lname,
+      this.identityForm.value.fullname.fname,
+      );
 
     this.httpService.getStudents(this.personService.whoWantsIn);
     this.router.navigate(['verify']);

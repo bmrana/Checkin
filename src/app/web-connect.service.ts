@@ -15,6 +15,7 @@ export class WebConnectService {
   getStudents(whoWantsIn: Credential) {
     let parameters = new HttpParams();
 
+    console.log(whoWantsIn);
     parameters = parameters.append('PID', whoWantsIn.pid);
     parameters = parameters.append('lname', whoWantsIn.lname);
     parameters = parameters.append('fname', whoWantsIn.fname);
@@ -22,14 +23,9 @@ export class WebConnectService {
 
     return this.http.get<Person[]>('http://services.dentontraining.com/searchpid/searchpid.svc/getPossibleStudents?wsdl',
     {params: parameters})
-      .map(persons => {
-        this.persons = persons;
-        console.log(this.persons);
-        return this.persons;
-      })
       .subscribe(
-        (possiblePersons: Person[]) => {
-          this.personService.setPossibles(possiblePersons);
+        (persons) => {
+          this.personService.setPossibles(persons);
         }
       );
   }

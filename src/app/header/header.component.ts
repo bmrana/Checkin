@@ -19,8 +19,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onReset() {
-    this.personService.personSelected = null;
+    // this.personService.personSelected = null;
     this.classesService.classSelected = null;
-    this.router.navigate(['/identity']);
+    this.router.navigate(['identity']);
   }
 }

@@ -20,14 +20,14 @@ export class ConfirmComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    if (!this.personService.personSelected || !this.classesService.classSelected) { // no person selected
-      this.router.navigate(['identity']);
-    } else {
-      this.person = this.personService.personSelected;
-      this.class = this.classesService.classSelected;
+    // if (!this.personService.personSelected || !this.classesService.classSelected) { // no person selected
+    //   this.router.navigate(['identity']);
+    // } else {
+    //   this.person = this.personService.personSelected;
+    //   this.class = this.classesService.classSelected;
 
-      this.name = this.person.fname + ' ' + this.person.lname;
-    }
+    //   this.name = this.person.fname + ' ' + this.person.lname;
+    // }
   }
 
 }

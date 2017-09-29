@@ -1,4 +1,4 @@
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, ParamMap } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PersonService } from './../person.service';
 import { Person } from './../person.model';
@@ -11,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class SelectedPersonComponent implements OnInit {
-  selectedPerson: Person;
+  person: Person;
+  id: number;
   editMode = false;
   personForm: FormGroup;
   buttonText = 'Create!';
@@ -23,8 +24,16 @@ export class SelectedPersonComponent implements OnInit {
               private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.selectedPerson = this.personService.personSelected;
-    this.editMode = this.selectedPerson != null;
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = +params['id'];
+          this.editMode = params['id'] != null;
+        }
+      );
+      this.person = this.personService.getPerson(this.id);
+    // this.selectedPerson = this.personService.personSelected;
+    this.editMode = this.person != null;
     this.initForm();
   }
 
@@ -43,11 +52,11 @@ export class SelectedPersonComponent implements OnInit {
       this.buttonText = 'Confirm!';
       this.titleText = 'Please confirm your details';
       this.subtitle = 'Make any needed changes.';
-      fname = this.selectedPerson.fname;
-      lname = this.selectedPerson.lname;
-      email = this.selectedPerson.email;
-      agency = this.selectedPerson.agency;
-      pid = this.selectedPerson.identity;
+      fname = this.person.fname;
+      lname = this.person.lname;
+      email = this.person.email;
+      agency = this.person.agency;
+      pid = this.person.pid;
     }
 
     this.personForm = new FormGroup ({

@@ -15,10 +15,10 @@ export class PossiblePersonComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onSelect() {
-    this.personService.onPersonSelected(this.possiblePerson.pid);
-    this.router.navigate(['/person']);
+    // const selectedId = this.personService.onPersonSelected(this.possiblePerson.id);
+    this.router.navigate(['/person/' + this.possiblePerson.id]);
   }
 }

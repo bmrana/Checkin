@@ -17,9 +17,8 @@ export class VerifyPersonComponent implements OnInit {
 
   ngOnInit() {
     this.route.data
-      .subscribe((data: { persons: Person[]}) => {
-        this.possiblePersons = data.persons;
-        console.log(this.possiblePersons);
+      .subscribe((data: { possiblePersons: Person[]}) => {
+       this.possiblePersons.push(...(data.possiblePersons));
       });
   }
 

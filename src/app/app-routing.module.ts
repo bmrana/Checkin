@@ -14,10 +14,7 @@ import { AppComponent } from './app.component';
 const appRoutes: Routes = [
     { path: '', component: HomeComponent},
     { path: 'identity', component: GetIdentityComponent, },
-    { path: 'person', component: SelectedPersonComponent, children: [
-        { path: 'new', component: SelectedPersonComponent },
-        { path: 'edit', component: SelectedPersonComponent },
-    ] },
+    { path: 'person/:id', component: SelectedPersonComponent },
     { path: 'verify', component: VerifyPersonComponent, resolve: {
         possiblePersons: PossiblePersonResolver} },
     { path: 'classes', component: ClassListComponent, },
