@@ -17,6 +17,7 @@ import { Person } from './../person.model';
 export class GetIdentityComponent implements OnInit {
   possiblePersons: Person[];
   identityForm: FormGroup;
+  showSpinner = false;
 
   constructor(private router: Router,
               private httpService: WebConnectService,
@@ -45,7 +46,7 @@ export class GetIdentityComponent implements OnInit {
       this.identityForm.value.fullname.lname,
       this.identityForm.value.fullname.fname,
       );
-
+    this.showSpinner = true;
     // this.httpService.fetchStudents(this.personService.whoWantsIn);
     this.router.navigate(['verify']);
   }

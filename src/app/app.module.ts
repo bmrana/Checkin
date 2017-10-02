@@ -1,3 +1,5 @@
+import { ClassListResolver } from './resolvers/class-list-resolver.service';
+import { SelectedPersonResolver } from './resolvers/selected-person-resolver.service';
 import { ClassesService } from './classes/classes.service';
 import { PossiblePersonResolver } from './possible-person-resolver.service';
 import { PersonService } from './person/person.service';
@@ -20,6 +22,7 @@ import { PossiblePersonComponent } from './person/verify-person/possible-person/
 import { HomeComponent } from './home/home.component';
 import { ClassItemComponent } from './classes/class-list/class-item/class-item.component';
 import { ConfirmComponent } from './classes/confirm/confirm.component';
+import { FinishComponent } from './finish/finish.component';
 
 
 
@@ -34,7 +37,8 @@ import { ConfirmComponent } from './classes/confirm/confirm.component';
     VerifyPersonComponent,
     HomeComponent,
     ClassItemComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    FinishComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +53,8 @@ import { ConfirmComponent } from './classes/confirm/confirm.component';
               PersonService, 
               WebConnectService, 
               PossiblePersonResolver, 
+              ClassListResolver,
+              SelectedPersonResolver,
               ClassesService],
   bootstrap: [AppComponent]
 })

@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ClassesService } from './../classes.service';
 import { Class } from './../class.model';
 import { Person } from './../../person/person.model';
@@ -14,20 +14,32 @@ export class ConfirmComponent implements OnInit {
   person: Person;
   class: Class;
   name: string;
+  id: number;
+  classID: string;
 
   constructor(private personService: PersonService,
               private classesService: ClassesService,
-              private router: Router) { }
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
-    // if (!this.personService.personSelected || !this.classesService.classSelected) { // no person selected
-    //   this.router.navigate(['identity']);
-    // } else {
-    //   this.person = this.personService.personSelected;
-    //   this.class = this.classesService.classSelected;
+    this.route.params
+    .subscribe(
+      (params: Params) => {
+        this.id = +params['id'];
+        this.classID = params['classid'];
+        this.person = this.personService.getPerson(this.id);
+        this.class = this.classesService.getClass(this.classID);
+      }
+    );
+      this.name = this.person.fname + ' ' + this.person.lname;
+    }
 
-    //   this.name = this.person.fname + ' ' + this.person.lname;
-    // }
+    onConfirm() {
+      this.router.navigate(['/complete']);
+    }
+
+    onCancel() {
+      this.router.navigate(['/']);
+    }
   }
-
-}

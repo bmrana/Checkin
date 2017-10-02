@@ -1,3 +1,4 @@
+import { WebConnectService } from './../../web-connect.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Person } from './../../person/person.model';
 import { PersonService } from './../../person/person.service';
@@ -19,6 +20,7 @@ export class ClassListComponent implements OnInit {
   constructor(private classService: ClassesService,
               private personService: PersonService,
               private router: Router,
+              private httpService: WebConnectService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -34,6 +36,7 @@ export class ClassListComponent implements OnInit {
     } else {
       this.name = this.person.fname + ' ' + this.person.lname;
       this.currentClasses = this.classService.getClasses();
+      
     }
   }
 

@@ -19,6 +19,7 @@ export class SelectedPersonComponent implements OnInit {
   buttonText = 'Create!';
   titleText= 'Please enter your details';
   subtitle = '';
+  showSpinner = false;
 
   constructor(private personService: PersonService,
               private router: Router,
@@ -40,8 +41,10 @@ export class SelectedPersonComponent implements OnInit {
   }
 
   onSubmit() {
-    this.httpService.updateStudent(this.buildPerson());
-    // this.router.navigate(['classes/' + this.id]);
+    this.httpService.whoWantsUpdate = this.buildPerson();
+    // this.httpService.updateStudent(this.buildPerson());
+    this.showSpinner = true;
+    this.router.navigate(['classes/' + this.id + '/post/']);
   }
 
   buildPerson() {

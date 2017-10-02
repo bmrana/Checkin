@@ -72,15 +72,19 @@
                 </div>
               </td>
             </tr>
+            <tr>
+              <td>
+                  <button 
+                  md-raised-button 
+                  (click)="onSubmit()"
+                  type="button">Search</button> 
+              </td>
+              <td *ngIf = "showSpinner">
+                  <md-spinner></md-spinner>                
+              </td>
+            </tr>
           </table>
-        
         </div>
-        <span></span>
-        <span class="spacer"></span>
-          <button 
-            md-raised-button 
-            (click)="onSubmit()"
-            type="button">Search</button>          
       </form>
     </md-card-content>
   </md-card>

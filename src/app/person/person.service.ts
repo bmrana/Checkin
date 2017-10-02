@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Status } from './../status-code.model';
 import { Injectable } from '@angular/core';
 import { Credential } from './credential.model';
@@ -10,6 +11,10 @@ export class PersonService {
     whoWantsIn: Credential;
     personsRetrieved = new Subject<Person[]>();
     statusCode = new Subject<Status>();
+    newPerson: Person;
+
+    constructor(private router: Router, private route: ActivatedRoute) {}
+
     private possiblePersons: Person[]= [];
 
     setPossibles(persons: Person[]) {
@@ -21,7 +26,16 @@ export class PersonService {
         const person: Person = this.possiblePersons.find(p => p.id === idNumber);
         return person;
     }
-    updateStatusCode(status: any) {
-        this.statusCode.next(status);
+    updateStatusCode(status: Status[]) {
+        status[0].Column1 > 0 ? this.newPersonIDReceived(status[0].Column1) : this.statusCode.next(status[0]);
+    }
+
+    newPersonIDReceived(id) {
+        // update new person with new ID from database.
+        this.newPerson.id = id;
+        // push new person into local array
+        this.possiblePersons.push(this.newPerson);
+
+        this.router.navigate(['/classes/' + id], {relativeTo: this.route});
     }
 }

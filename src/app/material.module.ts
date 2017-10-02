@@ -8,7 +8,8 @@ import { MdButtonModule,
         MdIconModule,
         MdProgressSpinnerModule,
         MdSnackBarModule,
-        MdCheckboxModule } from '@angular/material';
+        MdCheckboxModule,
+        MdProgressBarModule } from '@angular/material';
 
 @NgModule({
     imports: [ MdButtonModule,
@@ -20,7 +21,8 @@ import { MdButtonModule,
                 MdIconModule,
                 MdProgressSpinnerModule,
                 MdSnackBarModule,
-                MdCheckboxModule ],
+                MdCheckboxModule,
+                MdProgressBarModule ],
     exports: [ MdButtonModule,
                 MdInputModule,
                 MdToolbarModule,
@@ -30,6 +32,7 @@ import { MdButtonModule,
                 MdIconModule,
                 MdProgressSpinnerModule,
                 MdSnackBarModule,
-                MdCheckboxModule ]
+                MdCheckboxModule,
+                MdProgressBarModule ]
 })
 export class MaterialModule { }
