@@ -11,7 +11,7 @@ export class HomeComponent {
   constructor(private router: Router) { }
 
   onStart() {
-    this.router.navigate(['identity']);
+    this.router.navigate(['/identity']);
   }
 
 }

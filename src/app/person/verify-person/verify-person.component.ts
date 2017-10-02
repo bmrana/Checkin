@@ -1,3 +1,4 @@
+import { Status } from './../../status-code.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PersonService } from './../person.service';
 import { Person } from './../person.model';
@@ -20,6 +21,8 @@ export class VerifyPersonComponent implements OnInit {
       .subscribe((data: { possiblePersons: Person[]}) => {
        this.possiblePersons.push(...(data.possiblePersons));
       });
+
+    
   }
 
   onSearchAgain() {

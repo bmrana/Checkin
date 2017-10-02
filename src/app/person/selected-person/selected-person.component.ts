@@ -1,3 +1,5 @@
+import { MdSnackBar } from '@angular/material';
+import { Status } from './../../status-code.model';
 import { WebConnectService } from './../../web-connect.service';
 import { ActivatedRoute, Params, Router, ParamMap } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -24,7 +26,8 @@ export class SelectedPersonComponent implements OnInit {
   constructor(private personService: PersonService,
               private router: Router,
               private route: ActivatedRoute,
-              private httpService: WebConnectService) {}
+              private httpService: WebConnectService,
+              public snackBar: MdSnackBar) {}
 
   ngOnInit() {
     this.route.params
@@ -36,8 +39,24 @@ export class SelectedPersonComponent implements OnInit {
       );
       this.person = this.personService.getPerson(this.id);
     // this.selectedPerson = this.personService.personSelected;
+
+    this.personService.statusCode
+    .subscribe(
+      (s: Status) => {
+        this.openSnackBar(s);
+        this.showSpinner = false;
+      }
+    );
+
     this.editMode = this.person != null;
     this.initForm();
+  }
+
+  openSnackBar(s: Status) {
+    let message = '';
+    s.Column1 === -98 ? (message = 'Email Address already registered! Enter new email or reset form.') :
+      (message = 'PID already registered! Enter new PID or reset form.');
+    this.snackBar.open(message, '', {duration: 5000});
   }
 
   onSubmit() {
@@ -53,8 +72,10 @@ export class SelectedPersonComponent implements OnInit {
       sid, this.personForm.get('pid').value, this.personForm.get('email').value,
       this.personForm.get('agency').value, this.personForm.get('fname').value, this.personForm.get('lname').value
     );
+    console.log(newGuy);
     return newGuy;
   }
+
   private initForm() {
     let fname = '';
     let lname = '';

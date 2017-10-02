@@ -26,8 +26,14 @@ export class PersonService {
         const person: Person = this.possiblePersons.find(p => p.id === idNumber);
         return person;
     }
+
     updateStatusCode(status: Status[]) {
-        status[0].Column1 > 0 ? this.newPersonIDReceived(status[0].Column1) : this.statusCode.next(status[0]);
+        status[0].Column1 > 0 ? this.newPersonIDReceived(status[0].Column1) : this.personExists(status[0]);
+    }
+
+    personExists(status: Status) {
+        this.statusCode.next(status);
+        this.router.navigate(['/person/new']);
     }
 
     newPersonIDReceived(id) {
