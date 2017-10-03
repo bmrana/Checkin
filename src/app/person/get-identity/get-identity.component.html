@@ -1,0 +1,97 @@
+<div class="welcome">
+  <div class="hero">
+    <div class="mat-display-1">Welcome to the Training Center</div>
+  </div>
+</div>
+<div class="viewer-wrapper-large">
+  <md-card>
+    <md-card-title>Let's Find You In Our System</md-card-title>
+    <md-card-subtitle>What do you want to search by?</md-card-subtitle>
+    <md-card-content>
+      <form [formGroup]="identityForm" (ngSubmit)="onSubmit()">
+        <div class="form-wrapper">
+          <table class="full-width">
+            <tr>
+              <td class="icon-space">
+                <md-icon>verified_user</md-icon>
+              </td>
+              <td>
+                <md-form-field class="full-width">
+                  <input mdInput 
+                    placeholder="TCOLE PID #" 
+                    formControlName="pid"
+                    autocorrect="off"
+                    type="tel">
+                </md-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td class="icon-space"></td>
+              <td class="mat-title">OR</td>
+            </tr>
+            <tr>
+              <td class="icon-space">
+                <md-icon>email</md-icon>
+              </td>
+              <td>
+                <md-form-field class="full-width">
+                  <input mdInput 
+                    placeholder="Email Address" 
+                    formControlName="email"
+                    autocorrect="off"
+                    type="email">
+                  </md-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td class="icon-space"></td>
+              <td class="mat-title">OR</td>
+            </tr>
+            <tr>
+              <td class="icon-space">
+                <md-icon>face</md-icon>
+              </td>
+              <td>
+                <div formGroupName="fullname">
+                  <table class="full-width" cellspacing="0">
+                    <tr>
+                      <td>
+                        <md-form-field class="full-width">
+                          <input 
+                            mdInput 
+                            placeholder="Last Name"
+                            formControlName="lname"
+                            autocorrect="off">
+                        </md-form-field>
+                      </td>                        
+                      <td>
+                        <md-form-field class="full-width">
+                         <input 
+                            mdInput 
+                            placeholder="First Name"
+                            formControlName="fname"
+                            autocorrect="off">
+                        </md-form-field>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                  <button 
+                  md-raised-button 
+                  (click)="onSubmit()"
+                  type="button">Search</button> 
+              </td>
+              <td *ngIf = "showSpinner">
+                  <md-progress-bar></md-progress-bar>         
+              </td>
+            </tr>
+          </table>
+        </div>
+      </form>
+    </md-card-content>
+  </md-card>
+</div>

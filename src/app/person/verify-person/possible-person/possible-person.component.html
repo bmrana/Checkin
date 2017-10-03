@@ -1,0 +1,23 @@
+<!-- <div class="list-group">
+  <a 
+    style="cursor: pointer;" 
+    class="list-group-item"
+    (click)="onSelect()">
+    <h2 class="list-group-item-heading">
+      {{ possiblePerson.fname + ' ' + possiblePerson.lname}}
+    </h2>
+    <p class="list-grou-item-text">Agency: {{ possiblePerson.agency }}</p>
+    <p class="list-grou-item-text">Email: {{ possiblePerson.email }}</p>
+    <p class="list-grou-item-text">PID: {{ possiblePerson.identity }}</p>
+  </a>
+</div> -->
+
+<md-card (click)="onSelect()" style="cursor: pointer;">
+  <md-card-title>{{ possiblePerson.fname + ' ' + possiblePerson.lname }}</md-card-title>
+  <md-card-content>
+    <p>{{ possiblePerson.agency }}</p>
+    <p>{{ possiblePerson.email }}</p>
+    <p *ngIf="possiblePerson.pid">PID: {{ possiblePerson.pid }}</p>
+  </md-card-content>
+</md-card>
+

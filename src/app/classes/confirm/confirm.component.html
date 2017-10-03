@@ -1,0 +1,22 @@
+<div class="welcome hero">
+  <div class="mat-headline">Confirm checkin for {{ name }}</div>
+</div>
+<div class="viewer-wrapper-large">
+  <md-card>
+    <md-card-title>Class Check-In</md-card-title>
+    <md-card-subtitle>Please confirm check-in details...</md-card-subtitle>
+    <div style="padding: 30px">
+      <md-card-content>
+          <p class="mat-headline">{{ this.person.fname  }} {{ this.person.lname }}</p>
+          <p class="mat-title">{{ this.class.Title }}</p>
+          <p>Agency:  {{ this.person.agency }}</p>
+          <p>Email:  {{ this.person.email }}</p>
+          <p>PID:  {{ this.person.pid }}</p>
+      </md-card-content>
+      <md-card-actions>
+        <button md-raised-button color="primary" type="button" (click)="onConfirm()">Check In!</button>
+        <button md-raised-button color="warn" type="submit" (click)="onCancel()">Start Over!</button>
+      </md-card-actions>
+  </div>
+  </md-card>
+</div>
