@@ -45,7 +45,7 @@ export class GetIdentityComponent implements OnInit {
       this.identityForm.value.email,
       this.identityForm.value.fullname.lname,
       this.identityForm.value.fullname.fname,
-      );
+);
     this.showSpinner = true;
     // this.httpService.fetchStudents(this.personService.whoWantsIn);
     this.router.navigate(['verify']);

@@ -37,7 +37,7 @@ export class SelectedPersonComponent implements OnInit {
           this.editMode = params['id'] != null;
         }
       );
-      this.person = this.personService.getPerson(this.id);
+    this.person = this.personService.getPerson(this.id);
     // this.selectedPerson = this.personService.personSelected;
 
     this.personService.statusCode
@@ -60,9 +60,9 @@ export class SelectedPersonComponent implements OnInit {
   }
 
   onSubmit() {
+    this.showSpinner = true;
     this.httpService.whoWantsUpdate = this.buildPerson();
     // this.httpService.updateStudent(this.buildPerson());
-    this.showSpinner = true;
     this.router.navigate(['classes/' + this.id + '/post/']);
   }
 
@@ -72,7 +72,6 @@ export class SelectedPersonComponent implements OnInit {
       sid, this.personForm.get('pid').value, this.personForm.get('email').value,
       this.personForm.get('agency').value, this.personForm.get('fname').value, this.personForm.get('lname').value
     );
-    console.log(newGuy);
     return newGuy;
   }
 

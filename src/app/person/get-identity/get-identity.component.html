@@ -19,7 +19,9 @@
                 <md-form-field class="full-width">
                   <input mdInput 
                     placeholder="TCOLE PID #" 
-                    formControlName="pid">
+                    formControlName="pid"
+                    autocorrect="off"
+                    type="tel">
                 </md-form-field>
               </td>
             </tr>
@@ -35,7 +37,9 @@
                 <md-form-field class="full-width">
                   <input mdInput 
                     placeholder="Email Address" 
-                    formControlName="email">
+                    formControlName="email"
+                    autocorrect="off"
+                    type="email">
                   </md-form-field>
               </td>
             </tr>
@@ -56,7 +60,8 @@
                           <input 
                             mdInput 
                             placeholder="Last Name"
-                            formControlName="lname">
+                            formControlName="lname"
+                            autocorrect="off">
                         </md-form-field>
                       </td>                        
                       <td>
@@ -64,7 +69,8 @@
                          <input 
                             mdInput 
                             placeholder="First Name"
-                            formControlName="fname">
+                            formControlName="fname"
+                            autocorrect="off">
                         </md-form-field>
                       </td>
                     </tr>
@@ -80,7 +86,7 @@
                   type="button">Search</button> 
               </td>
               <td *ngIf = "showSpinner">
-                  <md-spinner></md-spinner>                
+                  <md-progress-bar></md-progress-bar>         
               </td>
             </tr>
           </table>
