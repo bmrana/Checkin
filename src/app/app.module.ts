@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { NgIdleModule } from '@ng-idle/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
@@ -47,7 +48,8 @@ import { FinishComponent } from './finish/finish.component';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgIdleModule.forRoot()
   ],
   providers: [WebConnectService, 
               PersonService, 
