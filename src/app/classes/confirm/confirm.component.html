@@ -14,9 +14,24 @@
           <p>PID:  {{ this.person.pid }}</p>
       </md-card-content>
       <md-card-actions>
-        <button md-raised-button color="primary" type="button" (click)="onConfirm()">Check In!</button>
-        <button md-raised-button color="warn" type="submit" (click)="onCancel()">Start Over!</button>
+        <table>
+          <tr>
+            <td>
+              <button md-raised-button color="primary" type="button" (click)="onConfirm()">Check In!</button>
+            </td>
+            <td>
+              <button md-raised-button color="warn" type="submit" (click)="onCancel()">Start Over!</button>
+            </td>
+          </tr>
+          <tr>
+              <td *ngIf = "showSpinner" style="width:65px;">
+                  <md-progress-bar mode="indeterminate"></md-progress-bar>
+                  <span class="mat-caption">Please wait...</span>  
+              </td>
+          </tr>
+        </table>
       </md-card-actions>
+      
   </div>
   </md-card>
 </div>

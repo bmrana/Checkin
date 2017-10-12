@@ -2,10 +2,12 @@
     <div class="hero">
       <div class="mat-display-1">Enjoy Your Event</div>
     </div>
-  <div class="viewer-wrapper-home"
-       style="cursor: pointer;">
+  <div class="viewer-wrapper-finish">
     <div>
-      Check In Successful
+      <div class="mat-headline">You have Checked-In to</div>
+      <div class="mat-display-3">{{ selectedClass.Title }}</div>
+      <div class="mat-display-2">Your class is located in</div>
+      <div class="mat-display-3">{{ selectedClass.Location }}</div>
     </div>
     <div>
       <md-progress-bar mode="determinate" [value]="seconds"></md-progress-bar>

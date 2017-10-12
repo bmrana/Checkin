@@ -70,9 +70,12 @@
                         color="primary"
                         [disabled]="!personForm.valid">{{ this.buttonText }}</button>
                     </td>
-                    <td *ngIf = "showSpinner">
-                      <md-spinner></md-spinner>
-                    </td>
+                  </tr>
+                  <tr>
+                    <td *ngIf = "showSpinner" style="width: 50px;">
+                      <md-progress-bar mode="indeterminate"></md-progress-bar>   
+                      <span class="mat-caption">Please wait...</span>  
+                  </td>
                   </tr>
                 </table>
                   

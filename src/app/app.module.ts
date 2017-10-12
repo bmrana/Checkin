@@ -1,3 +1,4 @@
+import { CheckinResolverService } from './resolvers/checkin-resolver.service';
 import { ClassListResolver } from './resolvers/class-list-resolver.service';
 import { SelectedPersonResolver } from './resolvers/selected-person-resolver.service';
 import { ClassesService } from './classes/classes.service';
@@ -51,12 +52,13 @@ import { FinishComponent } from './finish/finish.component';
     HttpClientModule,
     NgIdleModule.forRoot()
   ],
-  providers: [WebConnectService, 
-              PersonService, 
-              WebConnectService, 
-              PossiblePersonResolver, 
+  providers: [WebConnectService,
+              PersonService,
+              WebConnectService,
+              PossiblePersonResolver,
               ClassListResolver,
               SelectedPersonResolver,
+              CheckinResolverService,
               ClassesService],
   bootstrap: [AppComponent]
 })

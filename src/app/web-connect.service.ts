@@ -1,3 +1,4 @@
+import { Checkin } from './checkin.model';
 import { ClassesService } from './classes/classes.service';
 import { Class } from './classes/class.model';
 import { Status } from './status-code.model';
@@ -12,7 +13,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class WebConnectService {
   whoWantsIn: Credential;
+  checkin: Checkin;
   whoWantsUpdate: Person;
+  headz = new HttpHeaders({ 'Content-Type': 'application/json' });
+  testingUrlBase = 'http://localhost:57321';
+  productionUrlBase = 'http://services.dentontraining.com';
+
 
   constructor(private http: HttpClient, private personService: PersonService,
               private classesService: ClassesService) { }
@@ -24,7 +30,7 @@ export class WebConnectService {
       parameters = parameters.append('fname', whoWantsIn.fname);
       parameters = parameters.append('email', whoWantsIn.email);
 
-    return this.http.get<Person[]>('http://services.dentontraining.com/searchpid/searchpid.svc/getPossibleStudents?wsdl',
+    return this.http.get<Person[]>(this.productionUrlBase + '/searchpid/searchpid.svc/getPossibleStudents?wsdl',
       {params: parameters})
       .map(
         (persons) => {
@@ -34,8 +40,12 @@ export class WebConnectService {
       );
   }
 
+  insertCheckin(checkin: Checkin) {
+    return this.http.post(this.productionUrlBase + '/searchpid/searchPID.svc/insertCheckin', checkin, {headers: this.headz});
+      }
+
   fetchClasses() {
-    return this.http.get<Class[]>('http://services.dentontraining.com/GCalendar/GCalendar.svc/getEventList?wsdl')
+    return this.http.get<Class[]>(this.productionUrlBase + '/GCalendar/GCalendar.svc/getEventList?wsdl')
       .map(
         (list) => {
           this.classesService.updateClasses(list);
@@ -47,10 +57,7 @@ export class WebConnectService {
   updateStudent(student: Person) {
     // Not good here, but works.  Update newPerson with details from form.
     this.personService.newPerson = student;
-
-    let headz = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    return this.http.post('http://services.dentontraining.com/searchpid/searchpid.svc/updateStudent?wsdl', student, {headers: headz})
+    return this.http.post(this.productionUrlBase + '/searchpid/searchpid.svc/updateStudent', student, {headers: this.headz})
     .map(
       (n: Status[]) => {
         this.personService.updateStatusCode(n); }
