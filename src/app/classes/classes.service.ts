@@ -19,7 +19,7 @@ export class ClassesService {
     this.classes = classes;
   }
 
-  onClassSelected(index: string) {
-    this.classSelected = this.classes[index];
+  onClassSelected(id: string) {
+    this.classSelected = this.classes.find(c => c.Id === id);
   }
 }

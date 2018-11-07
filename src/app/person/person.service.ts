@@ -42,6 +42,6 @@ export class PersonService {
         // push new person into local array
         this.possiblePersons.push(this.newPerson);
 
-        this.router.navigate(['/classes/' + id], {relativeTo: this.route});
+        this.router.navigate(['/classes/' + id + '/choose'], {relativeTo: this.route});
     }
 }

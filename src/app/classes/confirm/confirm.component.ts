@@ -1,3 +1,5 @@
+import { WebConnectService } from './../../web-connect.service';
+import { Checkin } from './../../checkin.model';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { ClassesService } from './../classes.service';
 import { Class } from './../class.model';
@@ -16,9 +18,11 @@ export class ConfirmComponent implements OnInit {
   name: string;
   id: number;
   classID: string;
+  showSpinner = false;
 
   constructor(private personService: PersonService,
               private classesService: ClassesService,
+              private httpService: WebConnectService,
               private router: Router,
               private route: ActivatedRoute) { }
 
@@ -36,6 +40,8 @@ export class ConfirmComponent implements OnInit {
     }
 
     onConfirm() {
+      this.httpService.checkin = new Checkin(this.classID, this.person.id, this.class.Title);
+      this.showSpinner = true;
       this.router.navigate(['/complete']);
     }
 

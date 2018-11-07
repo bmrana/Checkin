@@ -1,3 +1,4 @@
+import { CheckinResolverService } from './resolvers/checkin-resolver.service';
 import { FinishComponent } from './finish/finish.component';
 import { ClassListResolver } from './resolvers/class-list-resolver.service';
 import { SelectedPersonResolver } from './resolvers/selected-person-resolver.service';
@@ -26,13 +27,18 @@ const appRoutes: Routes = [
             { path: 'post' , component: ClassListComponent,
                 resolve: {
                     newID: SelectedPersonResolver}
-            }
-        ], resolve: {
-            classes: ClassListResolver
-        }
+            },
+            { path: 'choose' , component: ClassListComponent,
+                resolve: {
+                    classes: ClassListResolver}
+                }
+        ]
     },
     { path: 'confirm/:id/:classid', component: ConfirmComponent },
-    { path: 'complete', component: FinishComponent }
+    { path: 'complete', component: FinishComponent,
+        resolve: {
+            checkinStatus: CheckinResolverService
+        } }
 ];
 
 @NgModule({

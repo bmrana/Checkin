@@ -1,3 +1,4 @@
+import { CheckinResolverService } from './resolvers/checkin-resolver.service';
 import { ClassListResolver } from './resolvers/class-list-resolver.service';
 import { SelectedPersonResolver } from './resolvers/selected-person-resolver.service';
 import { ClassesService } from './classes/classes.service';
@@ -9,6 +10,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { NgIdleModule } from '@ng-idle/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
@@ -47,14 +49,16 @@ import { FinishComponent } from './finish/finish.component';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgIdleModule.forRoot()
   ],
-  providers: [WebConnectService, 
-              PersonService, 
-              WebConnectService, 
-              PossiblePersonResolver, 
+  providers: [WebConnectService,
+              PersonService,
+              WebConnectService,
+              PossiblePersonResolver,
               ClassListResolver,
               SelectedPersonResolver,
+              CheckinResolverService,
               ClassesService],
   bootstrap: [AppComponent]
 })
